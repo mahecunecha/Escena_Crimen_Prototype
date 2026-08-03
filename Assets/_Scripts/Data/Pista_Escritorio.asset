@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f6d7382391084a08812a8b6c47d617, type: 3}
+  m_Name: Pista_Escritorio
+  m_EditorClassIdentifier: 
+  idPista: PISTA_ESCRITORIO
+  nombreVisual: Escritorio del Profesor
+  idPrerrequisito: PISTA_VINO
+  textoBloqueado: '"Hay papeles desordenador y mancgas de vino. No entiendo la prisa
+    con la que trabajaba."'
+  textoDesbloqueado: "\"Al revisar los papeles sabiendo que hab\xEDa alguien m\xE1s
+    aqu\xED, encuentro una nota oculta con el patr\xF3n de la estanter\xEDa.\""
