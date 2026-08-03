@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:Style src="VentanaPista.uss" />
+    <ui:VisualElement name="overlay" class="overlay">
+        <ui:VisualElement name="tarjeta" class="tarjeta">
+            <ui:Label name="lbl-titulo" text="Título de la Pista" />
+            <ui:Label name="lbl-contenido" text="Descripción de la pista." />
+            <ui:Button name="btn-cerrar" text="Entendido / Cerrar" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
