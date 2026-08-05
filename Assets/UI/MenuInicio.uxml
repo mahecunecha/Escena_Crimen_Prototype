@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="ContenedorInicio" style="position: absolute; width: 100%; height: 100%; background-color: rgba(10, 12, 16, 0.9); justify-content: center; align-items: center; background-image: url(&quot;project://database/Assets/UI/Sprites/Portada_EscenaCrimen.png?fileID=21300000&amp;guid=d6f5f41f465b3d24c9842d8538a035d5&amp;type=3#Portada_EscenaCrimen&quot;); -unity-background-scale-mode: scale-and-crop;">
+        <ui:VisualElement style="background-color: rgb(26, 26, 26); padding: 40px; border-radius: 15px; border-width: 2px; border-color: rgb(85, 85, 85); align-items: center; width: 400px;">
+            <ui:Label name="lblTitulo" text="ESCENA DEL CRIMEN" style="font-size: 42px; color: rgb(212, 175, 55); -unity-font-style: bold; margin-bottom: 5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); -unity-text-align: upper-center; white-space: normal;" />
+            <ui:Label name="lblSubtitulo" text="Un Videojuego de Misterio e Investigación" style="font-size: 16px; color: rgb(170, 170, 170); margin-bottom: 40px;" />
+            <ui:Button name="btnIniciar" text="Iniciar Investigación" style="width: 240px; height: 48px; background-color: rgb(212, 175, 55); color: rgb(17, 17, 17); font-size: 18px; -unity-font-style: bold; border-radius: 8px; margin-bottom: 12px;" />
+            <ui:Button name="btnSalirInicio" text="Salir del Juego" style="width: 240px; height: 40px; background-color: transparent; color: rgb(136, 136, 136); font-size: 14px; border-width: 1px; border-color: rgb(68, 68, 68); border-radius: 6px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

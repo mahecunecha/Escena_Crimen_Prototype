@@ -8,6 +8,11 @@ namespace PrototypeTerror.Investigation
         public static GestorInvestigacion Instance;
 
         private HashSet<string> pistasDescubiertas;
+        private int erroresCometidos = 0;
+        private const int MAX_ERRORES = 3;
+
+        public int ErroresCometidos => erroresCometidos;
+        public int MaxErrores => MAX_ERRORES;
 
         private void Awake()
         {
@@ -27,7 +32,17 @@ namespace PrototypeTerror.Investigation
             if (string.IsNullOrEmpty(ficha.idPrerrequisito) || pistasDescubiertas.Contains(ficha.idPrerrequisito))
             {
                 pistasDescubiertas.Add(ficha.idPista);
+                if (ficha.esPistaFinal)
+                {
+                    GameManager.Instance.Victoria();
+                }
                 return true;
+            }
+            
+            erroresCometidos++;
+            if (erroresCometidos >= MAX_ERRORES)
+            {
+                GameManager.Instance.GameOver();
             }
             return false;
         }

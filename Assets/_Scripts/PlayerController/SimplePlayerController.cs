@@ -62,8 +62,11 @@ public class SimplePlayerController : MonoBehaviour
         }
 
         // Bloquear y ocultar el cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if (PrototypeTerror.Investigation.GameManager.Instance == null || PrototypeTerror.Investigation.GameManager.Instance.EstadoActual != PrototypeTerror.Investigation.GameManager.EstadoJuego.Inicio)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     private void Update()

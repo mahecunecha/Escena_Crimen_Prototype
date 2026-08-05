@@ -18,6 +18,8 @@ namespace PrototypeTerror.Investigation
 
         private void Update()
         {
+            if (GameManager.Instance != null && GameManager.Instance.EstadoActual != GameManager.EstadoJuego.Gameplay) return;
+
             if (Input.GetKeyDown(KeyCode.E))
             {
                 Ray ray = camaraPrincipal.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));

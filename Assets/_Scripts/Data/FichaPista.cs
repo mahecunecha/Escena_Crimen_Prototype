@@ -14,5 +14,7 @@ namespace PrototypeTerror.Investigation
         
         [TextArea]
         public string textoDesbloqueado;
+        
+        public bool esPistaFinal = false;
     }
 }
