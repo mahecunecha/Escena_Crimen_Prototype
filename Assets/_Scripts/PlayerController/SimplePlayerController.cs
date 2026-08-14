@@ -11,6 +11,7 @@ public class SimplePlayerController : MonoBehaviour
     [Header("Configuración de Velocidades")]
     [SerializeField] private float velocidadCaminando = 3.5f;
     [SerializeField] private float velocidadCorriendo = 6.0f;
+    [SerializeField] private float velocidadAgachado = 1.5f;
     [SerializeField] private float velocidadRotacion = 10f;
 
     [Header("Suavizado de Movimiento")]
@@ -21,6 +22,10 @@ public class SimplePlayerController : MonoBehaviour
     [SerializeField] private InputActionReference moveAction;
     [SerializeField] private InputActionReference sprintAction;
     [SerializeField] private InputActionReference lookAction;
+    [SerializeField] private InputActionReference crouchAction;
+
+    [Header("Animación")]
+    [SerializeField] private Animator animatorJugador;
 
     // Variables internas de física y rotación
     private CharacterController _controller;
@@ -40,6 +45,7 @@ public class SimplePlayerController : MonoBehaviour
         if (moveAction != null) moveAction.action.Enable();
         if (sprintAction != null) sprintAction.action.Enable();
         if (lookAction != null) lookAction.action.Enable();
+        if (crouchAction != null) crouchAction.action.Enable();
     }
 
     private void OnDisable()
@@ -47,6 +53,7 @@ public class SimplePlayerController : MonoBehaviour
         if (moveAction != null) moveAction.action.Disable();
         if (sprintAction != null) sprintAction.action.Disable();
         if (lookAction != null) lookAction.action.Disable();
+        if (crouchAction != null) crouchAction.action.Disable();
     }
 
     private void Start()
@@ -117,12 +124,30 @@ public class SimplePlayerController : MonoBehaviour
         if (direccionMovimiento.sqrMagnitude > 0f)
         {
             bool isSprinting = sprintAction != null && sprintAction.action.IsPressed();
-            velocidadActual = isSprinting ? velocidadCorriendo : velocidadCaminando;
+            bool isCrouching = crouchAction != null && crouchAction.action.IsPressed();
+
+            if (isCrouching)
+            {
+                velocidadActual = velocidadAgachado;
+            }
+            else if (isSprinting)
+            {
+                velocidadActual = velocidadCorriendo;
+            }
+            else
+            {
+                velocidadActual = velocidadCaminando;
+            }
         }
 
         // 4. Suavizar el vector de movimiento general
         Vector3 desiredVelocity = direccionMovimiento * velocidadActual;
         _velocitySmooth = Vector3.SmoothDamp(_velocitySmooth, desiredVelocity, ref _velocitySmoothDerivative, smoothTime);
+
+        if (animatorJugador != null)
+        {
+            animatorJugador.SetFloat("Velocidad", velocidadActual);
+        }
 
         // 5. Aplicar Movimiento y Gravedad
         Vector3 moveVector = _velocitySmooth * Time.deltaTime;
