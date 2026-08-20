@@ -6,26 +6,29 @@ public class SimplePlayerController : MonoBehaviour
 {
     [Header("Referencias")]
     [Tooltip("El objeto vacío que simula la cabeza del jugador, hijo de este GameObject.")]
-    [SerializeField] private Transform headTransform;
+    [SerializeField]
+    private Transform headTransform;
 
-    [Header("Configuración de Velocidades")]
-    [SerializeField] private float velocidadCaminando = 3.5f;
+    [Header("Configuración de Velocidades")] [SerializeField]
+    private float velocidadCaminando = 3.5f;
+
     [SerializeField] private float velocidadCorriendo = 6.0f;
     [SerializeField] private float velocidadAgachado = 1.5f;
     [SerializeField] private float velocidadRotacion = 10f;
 
-    [Header("Suavizado de Movimiento")]
-    [SerializeField] private float smoothTime = 0.1f;
+    [Header("Suavizado de Movimiento")] [SerializeField]
+    private float smoothTime = 0.1f;
+
     [SerializeField] private float rotationSmoothTime = 0.02f;
 
-    [Header("Input Actions")]
-    [SerializeField] private InputActionReference moveAction;
+    [Header("Input Actions")] [SerializeField]
+    private InputActionReference moveAction;
+
     [SerializeField] private InputActionReference sprintAction;
     [SerializeField] private InputActionReference lookAction;
     [SerializeField] private InputActionReference crouchAction;
 
-    [Header("Animación")]
-    [SerializeField] private Animator animatorJugador;
+    [Header("Animación")] [SerializeField] private Animator animatorJugador;
 
     // Variables internas de física y rotación
     private CharacterController _controller;
@@ -69,7 +72,9 @@ public class SimplePlayerController : MonoBehaviour
         }
 
         // Bloquear y ocultar el cursor
-        if (PrototypeTerror.Investigation.GameManager.Instance == null || PrototypeTerror.Investigation.GameManager.Instance.EstadoActual != PrototypeTerror.Investigation.GameManager.EstadoJuego.Inicio)
+        if (PrototypeTerror.Investigation.GameManager.Instance == null ||
+            PrototypeTerror.Investigation.GameManager.Instance.EstadoActual !=
+            PrototypeTerror.Investigation.GameManager.EstadoJuego.Inicio)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -94,7 +99,8 @@ public class SimplePlayerController : MonoBehaviour
         _pitch = Mathf.Clamp(_pitch, -89f, 89f);
 
         // 3. Rotar el cuerpo (Eje Y) con suavizado
-        float smoothedYaw = Mathf.SmoothDampAngle(transform.eulerAngles.y, _yaw, ref _currentRotationSmoothVelocity, rotationSmoothTime);
+        float smoothedYaw = Mathf.SmoothDampAngle(transform.eulerAngles.y, _yaw, ref _currentRotationSmoothVelocity,
+            rotationSmoothTime);
         transform.rotation = Quaternion.Euler(0f, smoothedYaw, 0f);
 
         // 4. Rotar la cabeza (Ejes X e Y) de forma instantánea
@@ -142,16 +148,21 @@ public class SimplePlayerController : MonoBehaviour
 
         // 4. Suavizar el vector de movimiento general
         Vector3 desiredVelocity = direccionMovimiento * velocidadActual;
-        _velocitySmooth = Vector3.SmoothDamp(_velocitySmooth, desiredVelocity, ref _velocitySmoothDerivative, smoothTime);
+        _velocitySmooth =
+            Vector3.SmoothDamp(_velocitySmooth, desiredVelocity, ref _velocitySmoothDerivative, smoothTime);
 
         if (animatorJugador != null)
         {
-            animatorJugador.SetFloat("Velocidad", velocidadActual);
+            // 1. Enviamos la velocidad matemática exacta
+            animatorJugador.SetFloat("Velocidad", _velocitySmooth.magnitude);
+
+            // 2. Leemos el input directamente aquí y se lo pasamos al Animator de inmediato
+            animatorJugador.SetBool("IsCrouching", crouchAction.action.IsPressed());
         }
 
         // 5. Aplicar Movimiento y Gravedad
         Vector3 moveVector = _velocitySmooth * Time.deltaTime;
-        
+
         if (!_controller.isGrounded)
         {
             moveVector.y -= 9.81f * Time.deltaTime; // Gravedad simple
