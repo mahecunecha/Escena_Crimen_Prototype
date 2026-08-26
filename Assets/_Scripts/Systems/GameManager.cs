@@ -6,7 +6,7 @@ namespace PrototypeTerror.Investigation
     {
         public static GameManager Instance;
 
-        public enum EstadoJuego { Inicio, Gameplay, Pausa, Resultado }
+        public enum EstadoJuego { Inicio, Gameplay, Pausa, Resultado, Transicion }
         public EstadoJuego EstadoActual { get; private set; } = EstadoJuego.Inicio;
         public event System.Action<EstadoJuego> OnEstadoCambiado;
 
@@ -94,6 +94,24 @@ namespace PrototypeTerror.Investigation
             UnityEngine.Cursor.lockState = CursorLockMode.None;
             UnityEngine.Cursor.visible = true;
             OnEstadoCambiado?.Invoke(EstadoJuego.Resultado);
+        }
+
+        public void IniciarTransicion()
+        {
+            EstadoActual = EstadoJuego.Transicion;
+            Time.timeScale = 1f;
+            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            UnityEngine.Cursor.visible = false;
+            OnEstadoCambiado?.Invoke(EstadoJuego.Transicion);
+        }
+
+        public void FinalizarTransicion()
+        {
+            EstadoActual = EstadoJuego.Gameplay;
+            Time.timeScale = 1f;
+            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            UnityEngine.Cursor.visible = false;
+            OnEstadoCambiado?.Invoke(EstadoJuego.Gameplay);
         }
     }
 }

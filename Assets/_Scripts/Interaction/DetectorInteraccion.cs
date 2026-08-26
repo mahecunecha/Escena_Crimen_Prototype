@@ -25,18 +25,10 @@ namespace PrototypeTerror.Investigation
                 Ray ray = camaraPrincipal.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
                 if (Physics.Raycast(ray, out RaycastHit hit, distanciaInteraccion, capaInteractuable))
                 {
-                    ObjetoInteractuable objeto = hit.collider.GetComponent<ObjetoInteractuable>();
-                    if (objeto != null && objeto.Ficha != null)
+                    IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+                    if (interactable != null)
                     {
-                        bool exito = GestorInvestigacion.Instance.EvaluarPista(objeto.Ficha);
-                        if (exito)
-                        {
-                            VentanaPistaController.Instance.MostrarVentana(objeto.Ficha.nombreVisual, objeto.Ficha.textoDesbloqueado);
-                        }
-                        else
-                        {
-                            VentanaPistaController.Instance.MostrarVentana(objeto.Ficha.nombreVisual, objeto.Ficha.textoBloqueado);
-                        }
+                        interactable.Interactuar();
                     }
                 }
             }
