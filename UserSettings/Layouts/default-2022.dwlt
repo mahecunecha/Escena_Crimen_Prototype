@@ -118,7 +118,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 52
+  controlID: 117
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 53
+  controlID: 118
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -445,7 +445,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 0afbffff90760000
+      m_ExpandedIDs: 0afbffff92730000e47400008675000090760000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -813,9 +813,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -1.3152952, y: -491.83246, z: -0.6106767}
+    m_Target: {x: -1.5178468, y: -490.97562, z: -1.4707452}
     speed: 2
-    m_Value: {x: -1.3152952, y: -491.83246, z: -0.6106767}
+    m_Value: {x: -1.5178468, y: -490.97562, z: -1.4707452}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -861,13 +861,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.024878057, y: 0.925372, z: -0.37325838, w: 0.06173682}
+    m_Target: {x: 0.15316631, y: -0.722273, z: 0.16939683, w: 0.65287876}
     speed: 2
-    m_Value: {x: 0.024317345, y: 0.9254332, z: -0.37328303, w: 0.060346715}
+    m_Value: {x: 0.15315986, y: -0.7222426, z: 0.16938971, w: 0.6528513}
   m_Size:
-    m_Target: 7.7435064
+    m_Target: 4.9445777
     speed: 2
-    m_Value: 7.410054
+    m_Value: 4.9445777
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1048,7 +1048,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Import/RainMaker/Prefab
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1056,16 +1056,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Import/RainMaker/Prefab
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Aprendiz\Documents\proyectoSena\Escena_Crimen_Prototype
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 2e820000
-    m_LastClickedID: 33326
-    m_ExpandedIDs: 000000002e820000308200003282000034820000368200000084000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 29}
+    m_SelectedIDs: 8c840000
+    m_LastClickedID: 33932
+    m_ExpandedIDs: 000000002e82000030820000328200003482000036820000fa8300000084000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
