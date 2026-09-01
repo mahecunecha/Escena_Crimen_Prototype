@@ -8,6 +8,8 @@ namespace PrototypeTerror.Investigation
         [SerializeField] private AudioSource audioSourcePista;
         [SerializeField] private AudioClip sonidoDesbloqueo;
         [SerializeField] private bool variarPitch = false;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip sonidoInteraccion;
 
         public FichaPista Ficha => fichaPista;
 
@@ -15,6 +17,11 @@ namespace PrototypeTerror.Investigation
         {
             if (fichaPista != null)
             {
+                if (audioSource != null && sonidoInteraccion != null) 
+                { 
+                    audioSource.PlayOneShot(sonidoInteraccion); 
+                }
+
                 bool exito = GestorInvestigacion.Instance.EvaluarPista(fichaPista);
                 if (exito)
                 {
